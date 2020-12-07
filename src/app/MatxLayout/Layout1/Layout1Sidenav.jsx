@@ -77,8 +77,6 @@ class Layout1Sidenav extends Component {
       }
     } = this.props;
 
-    console.log(mode);
-
     this.updateSidebarMode({ mode: mode === "compact" ? "full" : "compact" });
   };
 
@@ -110,7 +108,7 @@ class Layout1Sidenav extends Component {
         <div className="ml-4">
           <span className="username">
             {/* <Icon>lock</Icon> */}
-            {user.displayName}
+            {user.clientName}
           </span>
           <div className="user__menu">
             <MatxMenu

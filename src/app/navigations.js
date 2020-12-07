@@ -12,6 +12,21 @@ export const navigations = [
         name: "Persistency",
         path: "/achievement/Persistency",
         iconText: "Persistency"
+      },
+      {
+        name: "Policy",
+        path: "/policy/list",
+        iconText: "Detail"
+      },
+      {
+        name: "Agency Profile",
+        path: "/profile/list",
+        iconText: "Agency"
+      },
+      {
+        name: "Agency Update",
+        path: "/updates/list",
+        iconText: "Agency"
       }
     ]
   }

@@ -1,0 +1,7 @@
+node_modules
+.vscode
+.env
+!build
+!default.conf
+!docker-entrypoint.sh
+!generate_config_js.sh

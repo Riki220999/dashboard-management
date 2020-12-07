@@ -7,6 +7,7 @@ export const LOGIN_ERROR = "LOGIN_ERROR";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_LOADING = "LOGIN_LOADING";
 export const RESET_PASSWORD = "RESET_PASSWORD";
+export const CLOSE_POPUP = "CLOSE_POPUP";
 
 export function loginWithEmailAndPassword({ pruforceID, password }) {
   return dispatch => {
@@ -35,6 +36,7 @@ export function loginWithEmailAndPassword({ pruforceID, password }) {
       });
   };
 }
+
 
 export function resetPassword({ pruforceID }) {
   return dispatch => {
@@ -84,4 +86,13 @@ export function firebaseLoginEmailPassword({ pruforceID, password }) {
         });
       });
   };
+}
+
+export function closePopUp({}){
+  
+return dispatch => {
+  return dispatch({
+  type:CLOSE_POPUP
+});
+}
 }

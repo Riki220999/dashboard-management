@@ -22,32 +22,41 @@ class JwtAuthService {
   loginWithEmailAndPassword = (pruforceID, password) => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
+        this.setSession(null);
+        const bodyRequest = {
+          "username":pruforceID,
+          "password":password,
+          "channel":"agen"
+        }
 
-        // const bodyRequest = {
-        //   "username":pruforceID,
-        //   "password":password,
-        //   "channel":"agen"
-        // }
+        HTTP_SERVICE.login(bodyRequest).then(loginResult => {
+          if(loginResult){
+          
+            loginResult.data.agentData.photoURL = "/assets/images/face-2.jpg";
+          resolve(loginResult.data);
+          }
+          else{
+            reject("error");
+          }
 
-        // HTTP_SERVICE.login(bodyRequest).then(loginResult => {
-        //   if(loginResult){
-          resolve(this.user);
-          // }
-          // else{
-          //   reject("error");
-          // }
-
-        //})
+        },function(error){
+          const errorLog = {};
+          errorLog.error = error;
+          reject(errorLog);
+        })
       }, 1000);
     }).then(data => {
       // Login successful
       // Save token
-      if(!data.error){
       this.setSession(data.token);
       // Set user
-      this.setUser(data);
+      this.setUser(data.agentData);
+      // Set role
+      this.setRole(data.role);
       return data;
-      }
+      
+    },function(error){
+      throw error;
     });
   };
 
@@ -69,6 +78,7 @@ class JwtAuthService {
   logout = () => {
     this.setSession(null);
     this.removeUser();
+    this.removeRole();
   }
 
   // Set token to all http request header, so you don't need to attach everytime
@@ -82,6 +92,8 @@ class JwtAuthService {
     }
   };
 
+  //need to place to more secure place
+
   // Save user to localstorage
   setUser = (user) => {    
     localStorageService.setItem("auth_user", user);
@@ -89,6 +101,15 @@ class JwtAuthService {
   // Remove user from localstorage
   removeUser = () => {
     localStorage.removeItem("auth_user");
+  }
+
+  // Save role to localstorage
+  setRole = (role) => {    
+    localStorageService.setItem("role", role);
+  }
+  // Remove user from localstorage
+  removeRole = () => {
+    localStorage.removeItem("role");
   }
 }
 

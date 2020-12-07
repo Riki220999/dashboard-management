@@ -1,4 +1,4 @@
-export const DEV = 'http://localhost:5000/auth'
+export const DEV = 'http://localhost:5000'
 export const SIT = 'https://pruforce-uat.prudential.co.id';
 //export const PROD = 'https://pruforce-uat.prudential.co.id/service-nonface2face';
 export const PROD = 'https://pruforce.prudential.co.id';

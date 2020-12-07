@@ -13,8 +13,9 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 
-import { loginWithEmailAndPassword } from "../../redux/actions/LoginActions";
+import { loginWithEmailAndPassword ,closePopUp} from "../../redux/actions/LoginActions";
 import './SignIn.css';
+import CustomizedSessionDialog from "./shared/CustomizedSessionDialog";
 
 const styles = theme => ({
 
@@ -40,9 +41,22 @@ const styles = theme => ({
 });
 
 class SignIn extends Component {
+
+  constructor(props) {
+    super(props)
+
+    this.popUpHandler = this.popUpHandler.bind(this);
+  }
+
+  popUpHandler() {
+    this.setState({
+      someVar: 'some value'
+    })
+  }
+  
   state = {
-    pruforceID: "ADM12345",
-    password: "Password09"
+    pruforceID: "",
+    password: ""
   };
   handleChange = event => {
     event.persist();
@@ -53,8 +67,13 @@ class SignIn extends Component {
   handleFormSubmit = event => {
     this.props.loginWithEmailAndPassword({ ...this.state });
   };
+
+  handleClosePopUp = event => {
+    this.props.closePopUp({});
+  }
+
   render() {
-    let { pruforceID, password } = this.state;
+    let { pruforceID, password,popUp } = this.state;
     let { classes } = this.props;
     return (
       <Grid
@@ -133,8 +152,9 @@ Hak Cipta © 2020 Prudential Indonesia. All rights reserved.
               
               </div>
               </Grid>
+              {this.props.login.popUp && (<CustomizedSessionDialog modalTitle={this.props.login.success? "KONFIRMASI": "GAGAL"} dialogOpen={this.props.login.popUp} handler={this.handleClosePopUp}></CustomizedSessionDialog>)} 
+              </Grid>
               
-              </Grid>  
     );
   }
 }
@@ -144,5 +164,5 @@ const mapStateToProps = state => ({
   login: state.login
 });
 export default withStyles(styles, { withTheme: true })(
-  withRouter(connect(mapStateToProps, { loginWithEmailAndPassword })(SignIn))
+  withRouter(connect(mapStateToProps, { loginWithEmailAndPassword,closePopUp })(SignIn))
 );

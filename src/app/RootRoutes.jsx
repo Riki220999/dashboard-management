@@ -9,6 +9,9 @@ import materialRoutes from "./views/material-kit/MaterialRoutes";
 import dragAndDropRoute from "./views/Drag&Drop/DragAndDropRoute";
 
 import achievementRoutes from './views/Achievement/AchievementRoutes';
+import policyRoutes from './views/Policy/PolicyRoutes';
+import profileRoutes from './views/AgencyProfile/AgencyProfileRoutes';
+import agencyRoutes from './views/AgencyUpdate/AgencyUpdateRoutes';
 
 import formsRoutes from "./views/forms/FormsRoutes";
 import mapRoutes from "./views/map/MapRoutes";
@@ -37,6 +40,9 @@ const routes = [
   ...mapRoutes,
   ...redirectRoute,
   ...achievementRoutes,
+  ...policyRoutes,
+  ...profileRoutes,
+  ...agencyRoutes,
   ...errorRoute
 ];
 

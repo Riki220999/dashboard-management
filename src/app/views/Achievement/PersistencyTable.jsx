@@ -93,12 +93,12 @@ const PaginationTable = () => {
       <Table className="whitespace-pre">
         <TableHead>
           <TableRow>
-            <TableCell className="px-0">Name</TableCell>
-            <TableCell className="px-0">Company</TableCell>
-            <TableCell className="px-0">Start Date</TableCell>
-            <TableCell className="px-0">Status</TableCell>
-            <TableCell className="px-0">Amount</TableCell>
-            <TableCell className="px-0">Action</TableCell>
+            <TableCell className="px-1 font-bold">Name</TableCell>
+            <TableCell className="px-1 font-bold">Company</TableCell>
+            <TableCell className="px-1 font-bold">Start Date</TableCell>
+            <TableCell className="px-1 font-bold">Status</TableCell>
+            <TableCell className="px-1 font-bold">Amount</TableCell>
+            <TableCell className="px-1 font-bold">Action</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

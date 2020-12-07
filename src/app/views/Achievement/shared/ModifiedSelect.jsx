@@ -21,7 +21,7 @@ const GroupedSelect = ({ text,style }) => {
       {/* <h3></h3> */}
       <FormControl className={classes.formControl}>
       <InputLabel htmlFor="grouped-select">{text}</InputLabel>
-        <Select defaultValue="" id="grouped-select">
+        <Select defaultValue="" id="grouped-select" >
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
