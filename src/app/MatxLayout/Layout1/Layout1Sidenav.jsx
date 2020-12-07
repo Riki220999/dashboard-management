@@ -100,6 +100,7 @@ class Layout1Sidenav extends Component {
 
   renderUser = () => {
     let { user } = this.props;
+    // console.log(user);
     return (
       <div className="sidenav__user">
         <div className="username-photo">

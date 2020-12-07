@@ -21,7 +21,7 @@ const getfilteredNavigations = (navList = [], role) => {
 export function getNavigationByUser() {
   return (dispatch, getState) => {
     let { user, navigations = [] } = getState();
-
+    console.log("ini user", user);
     let filteredNavigations = getfilteredNavigations(navigations, user.role);
 
     dispatch({
